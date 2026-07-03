@@ -1,0 +1,27 @@
+{
+  "version": 2,
+  "dgSpecHash": "WZg+C7TNclU=",
+  "success": true,
+  "projectFilePath": "C:\\Users\\bowen\\source\\repos\\BowenArrowsMod\\BowenArrowsMod\\BowenArrowsMod.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\bowen\\.nuget\\packages\\bepinex.core\\6.0.0-be.730\\bepinex.core.6.0.0-be.730.nupkg.sha512",
+    "C:\\Users\\bowen\\.nuget\\packages\\bepinex.net.common\\6.0.0-be.730\\bepinex.net.common.6.0.0-be.730.nupkg.sha512",
+    "C:\\Users\\bowen\\.nuget\\packages\\bepinex.net.coreclr\\6.0.0-be.730\\bepinex.net.coreclr.6.0.0-be.730.nupkg.sha512",
+    "C:\\Users\\bowen\\.nuget\\packages\\bepinex.preloader.core\\6.0.0-be.730\\bepinex.preloader.core.6.0.0-be.730.nupkg.sha512",
+    "C:\\Users\\bowen\\.nuget\\packages\\bepinex.resoniteplugininfoprops\\3.0.0\\bepinex.resoniteplugininfoprops.3.0.0.nupkg.sha512",
+    "C:\\Users\\bowen\\.nuget\\packages\\harmonyx\\2.16.0\\harmonyx.2.16.0.nupkg.sha512",
+    "C:\\Users\\bowen\\.nuget\\packages\\microsoft.win32.systemevents\\10.0.0\\microsoft.win32.systemevents.10.0.0.nupkg.sha512",
+    "C:\\Users\\bowen\\.nuget\\packages\\mono.cecil\\0.11.6\\mono.cecil.0.11.6.nupkg.sha512",
+    "C:\\Users\\bowen\\.nuget\\packages\\monomod.backports\\1.1.2\\monomod.backports.1.1.2.nupkg.sha512",
+    "C:\\Users\\bowen\\.nuget\\packages\\monomod.core\\1.3.3\\monomod.core.1.3.3.nupkg.sha512",
+    "C:\\Users\\bowen\\.nuget\\packages\\monomod.ilhelpers\\1.1.0\\monomod.ilhelpers.1.1.0.nupkg.sha512",
+    "C:\\Users\\bowen\\.nuget\\packages\\monomod.runtimedetour\\25.3.3\\monomod.runtimedetour.25.3.3.nupkg.sha512",
+    "C:\\Users\\bowen\\.nuget\\packages\\monomod.utils\\25.0.11\\monomod.utils.25.0.11.nupkg.sha512",
+    "C:\\Users\\bowen\\.nuget\\packages\\resonite.gamelibs\\2025.12.29.1301\\resonite.gamelibs.2025.12.29.1301.nupkg.sha512",
+    "C:\\Users\\bowen\\.nuget\\packages\\resonitemodding.bepinexresoniteshim\\0.9.3\\resonitemodding.bepinexresoniteshim.0.9.3.nupkg.sha512",
+    "C:\\Users\\bowen\\.nuget\\packages\\resonitemodding.bepisresonitewrapper\\1.0.2\\resonitemodding.bepisresonitewrapper.1.0.2.nupkg.sha512",
+    "C:\\Users\\bowen\\.nuget\\packages\\semanticversioning\\2.0.2\\semanticversioning.2.0.2.nupkg.sha512",
+    "C:\\Users\\bowen\\.nuget\\packages\\system.drawing.common\\10.0.0\\system.drawing.common.10.0.0.nupkg.sha512"
+  ],
+  "logs": []
+}
