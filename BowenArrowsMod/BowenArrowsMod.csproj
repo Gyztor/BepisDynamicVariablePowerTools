@@ -17,7 +17,8 @@
     <GamePath Condition="'$(ResonitePath)' != ''">$(ResonitePath)/</GamePath>
     <GamePath Condition="Exists('$(MSBuildProgramFiles32)\Steam\steamapps\common\Resonite\')">$(MSBuildProgramFiles32)\Steam\steamapps\common\Resonite\</GamePath>
     <GamePath Condition="Exists('$(HOME)/.steam/steam/steamapps/common/Resonite/')">$(HOME)/.steam/steam/steamapps/common/Resonite/</GamePath>
-    <PluginTargetDir>$(GamePath)BepInEx\plugins\$(AssemblyName)</PluginTargetDir>
+    <PluginTargetDir Condition="'$(ResoniteBepinExProfilePath)' != ''">$(ResoniteBepinExProfilePath)\BepInEx\plugins\$(AssemblyName)</PluginTargetDir>
+    <PluginTargetDir Condition="Exists('$(GamePath)BepInEx\plugins\')">$(GamePath)BepInEx\plugins\$(AssemblyName)</PluginTargetDir>
     <RestoreAdditionalProjectSources>
       https://nuget-modding.resonite.net/v3/index.json;
     </RestoreAdditionalProjectSources>

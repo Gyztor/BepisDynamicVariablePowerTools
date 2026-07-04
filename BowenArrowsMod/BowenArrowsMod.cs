@@ -8,7 +8,7 @@ namespace BowenArrowsMod;
 
 [ResonitePlugin(PluginMetadata.GUID, PluginMetadata.NAME, PluginMetadata.VERSION, PluginMetadata.AUTHORS, PluginMetadata.REPOSITORY_URL)]
 [BepInDependency(BepInExResoniteShim.PluginMetadata.GUID, BepInDependency.DependencyFlags.HardDependency)]
-public class Plugin : BasePlugin
+public class BowenArrowsMod : BasePlugin
 {
     internal static new ManualLogSource Log = null!;
 
@@ -17,6 +17,7 @@ public class Plugin : BasePlugin
         Log = base.Log;
         ResoniteHooks.OnEngineReady += OnEngineReady;
         Log.LogInfo($"Plugin {PluginMetadata.GUID} is loaded!");
+        HarmonyInstance.PatchAll();
     }
 
     private void OnEngineReady()
