@@ -5,7 +5,7 @@
     <Authors>BowenArrows2K</Authors>
     <TargetFramework>net10.0</TargetFramework>
     <RepositoryUrl>https://github.com/BowenArrows2K/BowenArrowsMod</RepositoryUrl>
-    <PackageId>net.bowenarrows.bowenarrowsmod</PackageId>
+    <PackageId>net.bowenarrows2k.bowenarrowsmod</PackageId>
     <Product>BowenArrowsMod</Product>
     <RootNamespace>BowenArrowsMod</RootNamespace>
     <ImplicitUsings>enable</ImplicitUsings>
