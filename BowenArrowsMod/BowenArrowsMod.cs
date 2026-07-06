@@ -8,7 +8,7 @@ namespace BowenArrowsMod;
 
 [ResonitePlugin(PluginMetadata.GUID, PluginMetadata.NAME, PluginMetadata.VERSION, PluginMetadata.AUTHORS, PluginMetadata.REPOSITORY_URL)]
 [BepInDependency(BepInExResoniteShim.PluginMetadata.GUID, BepInDependency.DependencyFlags.HardDependency)]
-public partial class BowenArrowsMod : BasePlugin
+public class BowenArrowsMod : BasePlugin
 {
     internal static new ManualLogSource Log = null!;
 
