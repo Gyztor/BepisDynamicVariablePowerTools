@@ -1,9 +1,7 @@
 ﻿using FrooxEngine;
-using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace BowenArrowsMod.Extensions;
+
 internal static class DestroyOnUserLeaveExtensions
 {
     internal static DestroyOnUserLeave DestroyWhenLocalUserLeaves(this Slot slot)

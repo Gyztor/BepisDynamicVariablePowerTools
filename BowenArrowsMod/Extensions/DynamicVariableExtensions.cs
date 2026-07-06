@@ -4,6 +4,7 @@ using HarmonyLib;
 using System.Diagnostics.CodeAnalysis;
 
 namespace BowenArrowsMod.Extensions;
+
 public static class DynamicVariableExtensions
 {
     public static IEnumerable<IDynamicVariable> GetLinkedVariables(this DynamicVariableSpace space,

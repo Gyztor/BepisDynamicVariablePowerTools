@@ -30,7 +30,7 @@ internal sealed class RenameDynamicVariables
             ? (it => it.VariableName == currentFullName && IsDynVarOfType(it, dynVarType))
             : (it => (it.VariableName == currentFullName || it.VariableName == currentVariableName) && IsDynVarOfType(it, dynVarType));
 
-        foreach ( var linkedVar in linkedSpace.GetLinkedVariables(predicate, true))
+        foreach (var linkedVar in linkedSpace.GetLinkedVariables(predicate, true))
         {
             var nameField = ((Worker)linkedVar).TryGetField<string>("VariableName") ?? ((Worker)linkedVar).TryGetField<string>("_variableName");
 

@@ -2,6 +2,7 @@
 using FrooxEngine.UIX;
 
 namespace BowenArrowsMod;
+
 internal static class RenameButtonHelper
 {
     internal static void BuildRenameUI(this UIBuilder builder, IField<string> nameField, Action<string> onRename)

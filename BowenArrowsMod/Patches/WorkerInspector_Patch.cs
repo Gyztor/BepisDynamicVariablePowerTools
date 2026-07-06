@@ -20,7 +20,7 @@ public class WorkerInspector_Patch
                 ui.NestInto(ui.Empty("DynamicVariableTools"));
                 {
                     ui.HorizontalHeader(36, out RectTransform header, out RectTransform content);
-                    
+
                     ui.Style.MinHeight = 24;
 
                     ui.NestInto(header);
