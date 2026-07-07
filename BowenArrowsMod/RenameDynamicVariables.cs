@@ -22,9 +22,9 @@ internal sealed class RenameDynamicVariables
             return;
         }
 
-        var dynVarType = GetDynVarType(dynVar);
-        var currentFullName = dynVar.VariableName;
-        DynamicVariableHelper.ParsePath(currentFullName, out var currentSpaceName, out var currentVariableName);
+        Type dynVarType = GetDynVarType(dynVar);
+        string currentFullName = dynVar.VariableName;
+        DynamicVariableHelper.ParsePath(currentFullName, out string currentSpaceName, out string currentVariableName);
 
         Predicate<IDynamicVariable> predicate = linkedSpace.OnlyDirectBinding
             ? (it => it.VariableName == currentFullName && IsDynVarOfType(it, dynVarType))
@@ -48,16 +48,17 @@ internal sealed class RenameDynamicVariables
                 continue;
             }
 
-            if (BowenArrowsMod.ChangeProtoFluxStringInputs.Value && currentSpaceName != null)
-            {
-                linkedSpace.Slot.ForeachComponentInChildren<IInput<string>>(stringInput =>
-                {
-                    if (stringInput.Value != currentFullName)
-                        return;
+        }
 
-                    stringInput.Value = newName;
-                }, includeLocal: true, cacheItems: true);
-            }
+        if (BowenArrowsMod.ChangeProtoFluxStringInputs.Value && currentSpaceName != null)
+        {
+            linkedSpace.Slot.ForeachComponentInChildren<IInput<string>>(stringInput =>
+            {
+                if (stringInput.Value != currentFullName)
+                    return;
+
+                stringInput.Value = newName;
+            }, includeLocal: true, cacheItems: true);
         }
 
     }
