@@ -1,4 +1,5 @@
-﻿using Elements.Core;
+﻿using BowenArrowsMod.Extensions;
+using BowenArrowsMod.Helpers;
 using FrooxEngine;
 using FrooxEngine.UIX;
 using HarmonyLib;
@@ -12,55 +13,41 @@ public class WorkerInspector_Patch
     [HarmonyPatch(typeof(WorkerInspector), "BuildInspectorUI")]
     public static void BuildInspectorUI_Postfix(Worker worker, UIBuilder ui)
     {
-        switch (worker)
+        if (BowenArrowsMod.Mod_Enabled.Value)
         {
-            case DynamicVariableSpace space:
-                // Add custom UI elements for DynamicVariableSpace
-                ui.Style.MinHeight = 24 + 36;
-                ui.NestInto(ui.Empty("DynamicVariableTools"));
-                {
-                    ui.HorizontalHeader(36, out RectTransform header, out RectTransform content);
+            switch (worker)
+            {
+                case DynamicVariableSpace space:
+                    // Add custom UI elements for DynamicVariableSpace
+                    //ui.Style.MinHeight = 24;
+                    ui.BuildRenameUI(space.SpaceName, onRename: newName => RenameDirectlyLinkedVariables.RenameSpace(space, newName));
+                    if (BowenArrowsMod.DebugInfo_Enabled.Value)
+                    {
+                        ui.BuildOutputUI(onOutLinkedVars: target => DebugInfoGenerator.OutputLinkedVariables(space, target),
+                          onOutCompHierarchy: target => DebugInfoGenerator.OutputComponentHierarchy(space, target));
+                    }
+                    break;
+                case IDynamicVariable dynamicVariable:
+                    // Add custom UI elements for IDynamicVariable
+                    var nameField = ((Worker)dynamicVariable).TryGetField<string>("VariableName");
+                    var isLinked = dynamicVariable.IsLinkedToSpace();
 
                     ui.Style.MinHeight = 24;
 
-                    ui.NestInto(header);
-                    ui.Text("Dynamic Variable Space Tools", alignment: Alignment.MiddleCenter);
-                    ui.NestOut();
-
-                    ui.NestInto(content);
+                    if (isLinked)
                     {
-                        ui.BuildRenameUI(space.SpaceName, onRename: newName => RenameDirectlyLinkedVariables.RenameSpace(space, newName));
+                        ui.HorizontalLayout(4);
+                        ui.Style.MinWidth = 256;
+                        dynamicVariable.TryGetLinkedSpace(out var linkedSpace);
+                        ui.Button($"DynamicVariableSpace: {linkedSpace.SpaceName}");
+                        ui.BuildOpenReference(linkedSpace);
+                        ui.NestOut();
                     }
-                    ui.NestOut();
-                }
-                ui.NestOut();
-                break;
-            case IDynamicVariable dynamicVariable:
-                // Add custom UI elements for IDynamicVariable
-                var nameField = ((Worker)dynamicVariable).TryGetField<string>("VariableName");
-
-                ui.Style.MinHeight = 24 + 36;
-                ui.NestInto(ui.Empty("DynamicVariableTools"));
-                {
-                    ui.HorizontalHeader(36, out RectTransform header, out RectTransform content);
-
-
-                    ui.Style.MinHeight = 24;
-
-                    ui.NestInto(header);
-                    ui.Text("Dynamic Variable Tools", alignment: Alignment.MiddleCenter);
-                    ui.NestOut();
-
-                    ui.NestInto(content);
-                    {
-                        ui.BuildRenameUI(nameField, onRename: newName => RenameDynamicVariables.RenameDynamicVariable(dynamicVariable, newName));
-                    }
-                    ui.NestOut();
-                }
-                ui.NestOut();
-                break;
-            default:
-                break;
+                    ui.BuildRenameUI(nameField, onRename: newName => RenameDynamicVariables.RenameDynamicVariable(dynamicVariable, newName));
+                    break;
+                default:
+                    break;
+            }
         }
     }
 }
