@@ -1,9 +1,9 @@
-﻿using BowenArrowsMod.Extensions;
+﻿using BepisDynamicVariablePowerTools.Extensions;
 using Elements.Core;
 using FrooxEngine;
 using FrooxEngine.ProtoFlux;
 
-namespace BowenArrowsMod;
+namespace BepisDynamicVariablePowerTools;
 
 internal sealed class RenameDynamicVariables
 {
@@ -50,7 +50,7 @@ internal sealed class RenameDynamicVariables
 
         }
 
-        if (BowenArrowsMod.ChangeProtoFluxStringInputs.Value && currentSpaceName != null)
+        if (BepisDynamicVariablePowerTools.ChangeProtoFluxStringInputs.Value && currentSpaceName != null)
         {
             linkedSpace.Slot.ForeachComponentInChildren<IInput<string>>(stringInput =>
             {

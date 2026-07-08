@@ -3,7 +3,7 @@ using FrooxEngine;
 using HarmonyLib;
 using System.Diagnostics.CodeAnalysis;
 
-namespace BowenArrowsMod.Extensions;
+namespace BepisDynamicVariablePowerTools.Extensions;
 
 public static class DynamicVariableExtensions
 {

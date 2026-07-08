@@ -1,6 +1,6 @@
 ﻿using FrooxEngine;
 
-namespace BowenArrowsMod.Extensions;
+namespace BepisDynamicVariablePowerTools.Extensions;
 
 internal static class DestroyOnUserLeaveExtensions
 {

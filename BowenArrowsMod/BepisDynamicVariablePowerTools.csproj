@@ -4,10 +4,10 @@
     <Version>1.0.0</Version>
     <Authors>BowenArrows2K</Authors>
     <TargetFramework>net10.0</TargetFramework>
-    <RepositoryUrl>https://github.com/BowenArrows2K/BowenArrowsMod</RepositoryUrl>
-    <PackageId>net.bowenarrows2k.bowenarrowsmod</PackageId>
-    <Product>BowenArrowsMod</Product>
-    <RootNamespace>BowenArrowsMod</RootNamespace>
+    <RepositoryUrl>https://github.com/BowenArrows2K/BepisDynamicVariablePowerTools</RepositoryUrl>
+    <PackageId>net.bowenarrows2k.BepisDynamicVariablePowerTools</PackageId>
+    <Product>BepisDynamicVariablePowerTools</Product>
+    <RootNamespace>BepisDynamicVariablePowerTools</RootNamespace>
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
     <Deterministic>true</Deterministic>

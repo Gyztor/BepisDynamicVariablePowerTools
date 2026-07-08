@@ -2,7 +2,7 @@
 using FrooxEngine;
 using System.Text;
 
-namespace BowenArrowsMod;
+namespace BepisDynamicVariablePowerTools;
 
 internal sealed class DebugInfoGenerator
 {
@@ -18,6 +18,12 @@ internal sealed class DebugInfoGenerator
             await default(ToWorld);
 
             target.Value = output;
+            if (!BepisDynamicVariablePowerTools.DebugInfo_OutputInPopoutUI.Value)
+                return;
+
+            Slot newText = space.LocalUserSpace.AddSlot("DynVarSpaceInfo");
+            newText.PositionInFrontOfUser(faceDirection: float3.Backward, distance: 1f, preserveUp: true);
+            UniversalImporter.SpawnText(newText, $"Hierarchy of linked dynamic variable components of Namespace {space.SpaceName} on {space.Slot.Name}", output, allowRTF: true);
         });
     }
 
@@ -40,6 +46,13 @@ internal sealed class DebugInfoGenerator
             await default(ToWorld);
 
             target.Value = names.ToString();
+
+            if (!BepisDynamicVariablePowerTools.DebugInfo_OutputInPopoutUI.Value)
+                return;
+
+            Slot newText = space.LocalUserSpace.AddSlot("DynVarSpaceInfo");
+            newText.PositionInFrontOfUser(faceDirection: float3.Backward, distance: 1f, preserveUp: true);
+            UniversalImporter.SpawnText(newText, $"Variables linked to Namespace [{space.SpaceName}] on {space.Slot.Name}", names.ToString(), allowRTF: true);
         });
     }
 }

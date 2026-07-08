@@ -2,7 +2,7 @@
 using FrooxEngine.ProtoFlux;
 using HarmonyLib;
 
-namespace BowenArrowsMod;
+namespace BepisDynamicVariablePowerTools;
 
 internal sealed class RenameDirectlyLinkedVariables
 {
@@ -38,7 +38,7 @@ internal sealed class RenameDirectlyLinkedVariables
             }
         }, includeLocal: true, cacheItems: true);
 
-        if (BowenArrowsMod.ChangeProtoFluxStringInputs.Value)
+        if (BepisDynamicVariablePowerTools.ChangeProtoFluxStringInputs.Value)
         {
             space.Slot.ForeachComponentInChildren<IInput<string>>(stringInput =>
             {

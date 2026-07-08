@@ -1,9 +1,9 @@
-﻿using BowenArrowsMod.Extensions;
+﻿using BepisDynamicVariablePowerTools.Extensions;
 using Elements.Core;
 using FrooxEngine;
 using System.Text;
 
-namespace BowenArrowsMod;
+namespace BepisDynamicVariablePowerTools;
 
 internal sealed class SpaceTree
 {
@@ -31,6 +31,7 @@ internal sealed class SpaceTree
     {
         var builder = new StringBuilder($"Hierarchy of linked dynamic variable components of Namespace [{_space.SpaceName}] on {_space.Slot.Name}");
 
+        builder.AppendLine();
         BuildString(builder, "");
         builder.Remove(builder.Length - Environment.NewLine.Length, Environment.NewLine.Length);
 
@@ -57,7 +58,7 @@ internal sealed class SpaceTree
 
         builder.Append(indent);
         builder.Append(last ? "└─" : "├─");
-        builder.AppendLine(child._slot.Name);
+        builder.AppendLine($"{child._slot.Name}<noparse></closeall>");
 
         child.BuildString(builder, indent + (last ? "  " : "│ "));
     }

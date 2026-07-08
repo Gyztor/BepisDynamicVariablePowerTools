@@ -1,8 +1,8 @@
-﻿using BowenArrowsMod.Extensions;
+﻿using BepisDynamicVariablePowerTools.Extensions;
 using FrooxEngine;
 using FrooxEngine.UIX;
 
-namespace BowenArrowsMod.Helpers;
+namespace BepisDynamicVariablePowerTools.Helpers;
 
 internal static class BAUIHelper
 {
@@ -32,7 +32,7 @@ internal static class BAUIHelper
     {
         var outputfield = builder.Current.AttachComponent<ValueField<string>>();
 
-        if (BowenArrowsMod.DebugInfo_LinkedVars.Value)
+        if (BepisDynamicVariablePowerTools.DebugInfo_LinkedVars.Value)
         {
             var linkedVariableButton = builder.Button("Output Variable Definitions");
             linkedVariableButton.LocalPressed += (button, data) =>
@@ -40,7 +40,7 @@ internal static class BAUIHelper
                 onOutLinkedVars(outputfield.Value);
             };
         }
-        if (BowenArrowsMod.DebugInfo_CompHierarchy.Value)
+        if (BepisDynamicVariablePowerTools.DebugInfo_CompHierarchy.Value)
         {
             var componentHierarchyButton = builder.Button("Output Component Hierarchy");
             componentHierarchyButton.LocalPressed += (button, data) =>
@@ -48,8 +48,10 @@ internal static class BAUIHelper
                 onOutCompHierarchy(outputfield.Value);
             };
         }
-
-        SyncMemberEditorBuilder.Build(outputfield.Value, "Output", outputfield.GetSyncMemberFieldInfo("Value"), builder);
+        if (!BepisDynamicVariablePowerTools.DebugInfo_OutputInPopoutUI.Value)
+        {
+            SyncMemberEditorBuilder.Build(outputfield.Value, "Output", outputfield.GetSyncMemberFieldInfo("Value"), builder);
+        }
     }
 
     internal static ReferenceField<TReference> BuildOpenReference<TReference>(this UIBuilder ui, TReference reference)
