@@ -31,7 +31,7 @@ jobs:
                 
             -   name: Build
                 run: |
-                    dotnet build -c Release
+                    dotnet build -c Release -p:ResoniteInstallOnBuild=true
                     # Create dist folder and copy the built DLL for release
                     mkdir -p ./bin/dist/
                     cp ./BepisModSettings/bin/Release/BepisModSettings.dll ./bin/dist/
