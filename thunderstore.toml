@@ -23,12 +23,12 @@ outdir = "./build"
 
 # Copy the compiled DLL to the plugins folder in the mod package
 [[build.copy]]
-source = "./BepisDynamicVariablePowerTools/bin/Release/mod/client/BepInEx/plugins/BepisDynamicVariablePowerTools/BepisDynamicVariablePowerTools.dll"
+source = "./BepisDynamicVariablePowerTools/bin/Release/BepisDynamicVariablePowerTools/BepisDynamicVariablePowerTools.dll"
 target = "plugins/BepisDynamicVariablePowerTools/"
 
 # Include the PDB file for better debugging support
 [[build.copy]]
-source = "./BepisDynamicVariablePowerTools/bin/Release/mod/client/BepInEx/plugins/BepisDynamicVariablePowerTools/BepisDynamicVariablePowerTools.pdb"
+source = "./BepisDynamicVariablePowerTools/bin/Release/BepisDynamicVariablePowerTools/BepisDynamicVariablePowerTools.pdb"
 target = "plugins/BepisDynamicVariablePowerTools/"
 
 # Uncomment the following lines to include CHANGELOG file in your mod package. https://wiki.thunderstore.io/mods/updating-a-package#changelog
