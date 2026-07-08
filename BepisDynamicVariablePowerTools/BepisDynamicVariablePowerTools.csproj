@@ -1,5 +1,5 @@
-﻿<!--<Project Sdk="Microsoft.NET.Sdk">-->
-<Project Sdk="Remora.Resonite.Sdk/2.3.1">
+﻿<Project Sdk="Microsoft.NET.Sdk">
+<!--<Project Sdk="Remora.Resonite.Sdk/2.3.1">-->
 
   <PropertyGroup>
     <Version>1.0.2</Version>
@@ -42,7 +42,7 @@
     <ResoniteReference Include="Renderite.Shared" />
   </ItemGroup>
 
-  <!--<ItemGroup>
+  <ItemGroup>
     <Reference Include="Elements.Core">
       <HintPath>$(GamePath)Elements.Core.dll</HintPath>
     </Reference>
@@ -52,7 +52,7 @@
     <Reference Include="Renderite.Shared">
       <HintPath>$(GamePath)Renderite.Shared.dll</HintPath>
     </Reference>
-  </ItemGroup>-->
+  </ItemGroup>
   
   <!-- Modding dependencies -->
   <ItemGroup>
