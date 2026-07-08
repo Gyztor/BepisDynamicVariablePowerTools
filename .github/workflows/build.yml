@@ -1,0 +1,47 @@
+name: Build
+
+on:
+  push:
+    branches: [ '**' ]
+  pull_request:
+    branches: [ '**' ]
+  workflow_dispatch:
+
+jobs:
+    build:
+        runs-on: ubuntu-latest
+        steps:
+            -   uses: actions/checkout@v3
+                with:
+                    fetch-depth: 0 # Need to fetch all for proper history
+            -   name: Collect build info
+                id: info
+                run: |
+                    # Get short SHA
+                    SHA_SHORT=$(git rev-parse --short HEAD)
+                    echo "sha_short=$SHA_SHORT" >> $GITHUB_OUTPUT
+                    
+                    # Extract version from csproj
+                    VERSION=$(grep -oP '(?<=<Version>)[^<]+' BepisDynamicVariablePowerTools/BepisDynamicVariablePowerTools.csproj)
+                    echo "version=$VERSION" >> $GITHUB_OUTPUT
+                    echo "Version found: $VERSION"
+            -   uses: actions/setup-dotnet@v4
+                with:
+                    dotnet-version: "10.0.x"
+            -   name: Build
+                run: |
+                    dotnet build -c Release
+                    # Create dist folder and copy the built DLL for release
+                    mkdir -p ./bin/dist/
+                    cp ./BepisModSettings/bin/Release/BepisModSettings.dll ./bin/dist/
+            -   name: Create Thunderstore Package
+                run: |
+                    dotnet tool restore
+                    dotnet tcli build --package-version ${{ steps.info.outputs.version }}
+            -   name: Upload artifacts
+                uses: actions/upload-artifact@v4
+                with:
+                    name: BepisDynamicVariablePowerTools-${{ steps.info.outputs.version }}-${{ steps.info.outputs.sha_short }}
+                    path: |
+                        ./bin/dist/*.dll
+                        ./build/*.zip
