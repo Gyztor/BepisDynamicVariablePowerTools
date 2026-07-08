@@ -34,7 +34,7 @@ jobs:
                     dotnet build -c Release -p:ResoniteInstallOnBuild=true
                     # Create dist folder and copy the built DLL for release
                     mkdir -p ./bin/dist/
-                    cp ./BepisDynamicVariablePowerTools/bin/Release/BepisDynamicVariablePowerTools.dll ./bin/dist/
+                    cp ./BepisDynamicVariablePowerTools/bin/Release/mod/client/BepInEx/Plugins/BepisDynamicVariablePowerTools.dll ./bin/dist/
             -   name: Create Thunderstore Package
                 run: |
                     dotnet tool restore
