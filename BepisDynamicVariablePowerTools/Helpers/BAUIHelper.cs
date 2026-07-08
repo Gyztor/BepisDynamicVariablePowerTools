@@ -1,11 +1,16 @@
 ﻿using BepisDynamicVariablePowerTools.Extensions;
 using FrooxEngine;
 using FrooxEngine.UIX;
+using System.Reflection;
 
 namespace BepisDynamicVariablePowerTools.Helpers;
 
 internal static class BAUIHelper
 {
+    private static readonly FieldInfo _refTarget = typeof(RefEditor).GetField("_targetRef", BindingFlags.Instance | BindingFlags.NonPublic);
+    private static readonly MethodInfo _openInspectorButton = typeof(RefEditor).GetMethod("OpenInspectorButon", BindingFlags.Instance | BindingFlags.NonPublic);
+    private static readonly MethodInfo _openWorkerInspectorButton = typeof(RefEditor).GetMethod("OpenWorkerInspectorButon", BindingFlags.Instance | BindingFlags.NonPublic);
+
     internal static void BuildRenameUI(this UIBuilder builder, IField<string> nameField, Action<string> onRename)
     {
         var layout = builder.HorizontalLayout(4).Slot.DestroyWhenLocalUserLeaves();
@@ -70,10 +75,14 @@ internal static class BAUIHelper
         backingField.Reference.Target = reference;
 
         var refEditor = button.Slot.AttachComponent<RefEditor>();
-        refEditor._targetRef.Target = backingField.Reference;
+        var targetValue = (RelayRef<ISyncRef>)_refTarget?.GetValue(refEditor);
+        targetValue.Target = backingField.Reference;
 
-        button.Pressed.Target = refEditor.OpenInspectorButton;
-        ui.Button("↑").Pressed.Target = refEditor.OpenWorkerInspectorButton;
+        var InspectorAction = (ButtonEventHandler)Delegate.CreateDelegate(typeof(Action<IButton, ButtonEventData>), refEditor, _openInspectorButton);
+        var WorkerInspectorAction = (ButtonEventHandler)Delegate.CreateDelegate(typeof(Action<IButton, ButtonEventData>), refEditor, _openWorkerInspectorButton);
+
+        button.Pressed.Target = InspectorAction;
+        ui.Button("↑").Pressed.Target = WorkerInspectorAction;
 
         ui.PopStyle();
 
