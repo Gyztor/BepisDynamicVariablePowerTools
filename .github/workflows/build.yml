@@ -29,7 +29,9 @@ jobs:
                 with:
                     dotnet-version: "10.0.x"
             -   name: install RemoraSDK
-                run: dotnet add package Remora.Resonite.Sdk --version 2.3.1
+                run: |
+                  dotnet add package Remora.Resonite.Sdk --version 2.3.1
+                  dotnet tool restore
                 
             -   name: Build
                 run: |
