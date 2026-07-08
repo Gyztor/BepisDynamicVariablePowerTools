@@ -19,7 +19,7 @@ ResoniteModding-BepisResoniteWrapper = "1.0.2"
 [build]
 icon = "./icon.png"
 readme = "./README.md"
-outdir = "./Releases"
+outdir = "./build"
 
 # Copy the compiled DLL to the plugins folder in the mod package
 [[build.copy]]
