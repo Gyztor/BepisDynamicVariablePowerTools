@@ -22,7 +22,7 @@ jobs:
                     echo "sha_short=$SHA_SHORT" >> $GITHUB_OUTPUT
                     
                     # Extract version from csproj
-                    VERSION=$(grep -oP '(?<=<Version>)[^<]+' BepisDynamicVariablePowerTools/BepisDynamicVariablePowerTools.csproj)
+                    VERSION=$(grep -oP '(?<=<Version>)[^<]+' BepisDynamicVariablePowerTools.csproj)
                     echo "version=$VERSION" >> $GITHUB_OUTPUT
                     echo "Version found: $VERSION"
             -   uses: actions/setup-dotnet@v5
